@@ -1,8 +1,8 @@
 resource "azurerm_storage_account" "this" {
   name = var.name
 
-  resource_group_name = var.resource_group_name
   location            = var.location
+  resource_group_name = var.resource_group_name
 
   access_tier              = var.access_tier
   account_kind             = var.account_kind
