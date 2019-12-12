@@ -27,7 +27,7 @@ resource "azurerm_cdn_endpoint" "this" {
 
   optimization_type  = var.optimization_type
   origin_host_header = var.host_name
-  profile_name       = azurerm_cdn_profile.this.name
+  profile_name       = azurerm_cdn_profile.this[count.index].name
 
   querystring_caching_behaviour = var.querystring_caching_behaviour
 
