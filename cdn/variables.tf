@@ -1,3 +1,9 @@
+variable "enabled" {
+  type = bool
+
+  default = true
+}
+
 variable "host_name" {
   type = string
 }
