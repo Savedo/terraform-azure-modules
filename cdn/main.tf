@@ -1,6 +1,8 @@
 # CDN Profile
 
 resource "azurerm_cdn_profile" "this" {
+  count = var.enabled ? 1 : 0
+
   name = "${var.name}-cdn-profile"
 
   location            = var.location
@@ -14,6 +16,8 @@ resource "azurerm_cdn_profile" "this" {
 # CDN Endpoint
 
 resource "azurerm_cdn_endpoint" "this" {
+  count = var.enabled ? 1 : 0
+
   name = "${var.name}-cdn-endpoint"
 
   location            = var.location
