@@ -1,5 +1,7 @@
+# CDN Profile
+
 resource "azurerm_cdn_profile" "this" {
-  name = var.cdn_profile_name
+  name = "${var.name}-cdn-profile"
 
   location            = var.location
   resource_group_name = var.resource_group_name
@@ -9,21 +11,28 @@ resource "azurerm_cdn_profile" "this" {
   tags = var.tags
 }
 
+# CDN Endpoint
+
 resource "azurerm_cdn_endpoint" "this" {
-  name = var.cdn_endpoint_name
+  name = "${var.name}-cdn-endpoint"
 
   location            = var.location
   resource_group_name = var.resource_group_name
 
   is_http_allowed = var.is_http_allowed
-  profile_name    = azurerm_cdn_profile.this.name
 
-  origin {
-    host_name = var.host_name
-    name      = var.cdn_endpoint_name
-  }
-
+  optimization_type  = var.optimization_type
   origin_host_header = var.host_name
+  profile_name       = azurerm_cdn_profile.this.name
+
+  querystring_caching_behaviour = var.querystring_caching_behaviour
 
   tags = var.tags
+
+  origin {
+    name = var.name
+
+    host_name  = var.host_name
+    https_port = var.https_port
+  }
 }
