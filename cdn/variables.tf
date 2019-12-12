@@ -29,7 +29,7 @@ variable "optimization_type" {
 }
 
 variable "querystring_caching_behaviour" {
-  type = bool
+  type = string
 
   default = "IgnoreQueryString"
 }
