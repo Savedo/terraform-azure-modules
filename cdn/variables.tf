@@ -1,13 +1,11 @@
-variable "cdn_endpoint_name" {
-  type = string
-}
-
-variable "cdn_profile_name" {
-  type = string
-}
-
 variable "host_name" {
   type = string
+}
+
+variable "https_port" {
+  type = string
+
+  default = "443"
 }
 
 variable "is_http_allowed" {
@@ -18,6 +16,22 @@ variable "is_http_allowed" {
 
 variable "location" {
   type = string
+}
+
+variable "name" {
+  type = string
+}
+
+variable "optimization_type" {
+  type = string
+
+  default = "GeneralWebDelivery"
+}
+
+variable "querystring_caching_behaviour" {
+  type = bool
+
+  default = "IgnoreQueryString"
 }
 
 variable "resource_group_name" {
