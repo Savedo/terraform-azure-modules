@@ -28,7 +28,7 @@ resource "azurerm_storage_account" "this" {
 resource "null_resource" "static_website" {
   count = var._count
 
-  depends_on = [azurerm_storage_account.this[count.index]]
+  depends_on = [azurerm_storage_account.this]
 
   provisioner "local-exec" {
     command = "az storage blob service-properties update --account-name ${azurerm_storage_account.this[count.index].name} --static-website --index-document index.html --404-document index.html"
