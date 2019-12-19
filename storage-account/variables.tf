@@ -1,3 +1,9 @@
+variable "_count" {
+  type = integer
+
+  default = 1
+}
+
 variable "access_tier" {
   type = string
 
