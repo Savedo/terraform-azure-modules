@@ -1,7 +1,7 @@
-variable "enabled" {
-  type = bool
+variable "_count" {
+  type = integer
 
-  default = true
+  default = 1
 }
 
 variable "host_name" {

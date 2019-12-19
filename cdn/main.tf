@@ -1,7 +1,7 @@
 # CDN Profile
 
 resource "azurerm_cdn_profile" "this" {
-  count = var.enabled ? 1 : 0
+  count = var._count
 
   name = "${var.name}-cdn-profile"
 
@@ -16,7 +16,7 @@ resource "azurerm_cdn_profile" "this" {
 # CDN Endpoint
 
 resource "azurerm_cdn_endpoint" "this" {
-  count = var.enabled ? 1 : 0
+  count = var._count
 
   name = "${var.name}-cdn-endpoint"
 
