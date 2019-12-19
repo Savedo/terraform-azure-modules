@@ -1,5 +1,5 @@
 variable "_count" {
-  type = integer
+  type = number
 
   default = 1
 }
