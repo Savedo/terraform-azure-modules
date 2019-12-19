@@ -1,4 +1,6 @@
 resource "azurerm_storage_account" "this" {
+  count = var._count
+
   name = var.name
 
   location            = var.location
@@ -24,9 +26,11 @@ resource "azurerm_storage_account" "this" {
 # Temporary workaround until static-website PR is accepted by HashiCorp
 #   @ref https://github.com/terraform-providers/terraform-provider-azurerm/issues/1903
 resource "null_resource" "static_website" {
-  depends_on = [azurerm_storage_account.this]
+  count = var._count
+
+  depends_on = [azurerm_storage_account.this[count.index]]
 
   provisioner "local-exec" {
-    command = "az storage blob service-properties update --account-name ${azurerm_storage_account.this.name} --static-website --index-document index.html --404-document index.html"
+    command = "az storage blob service-properties update --account-name ${azurerm_storage_account.this[count.index].name} --static-website --index-document index.html --404-document index.html"
   }
 }
