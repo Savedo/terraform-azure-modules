@@ -11,8 +11,8 @@ resource "azurerm_storage_account" "this" {
   account_replication_type = var.account_replication_type
   account_tier             = var.account_tier
 
-  azurerm_advanced_threat_protection = var.azurerm_advanced_threat_protection
-  enable_https_traffic_only          = var.enable_https_traffic_only
+  enable_advanced_threat_protection = var.enable_advanced_threat_protection
+  enable_https_traffic_only         = var.enable_https_traffic_only
 
   network_rules {
     default_action = "Deny"

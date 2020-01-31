@@ -28,7 +28,7 @@ variable "account_tier" {
   default = "Standard"
 }
 
-variable "azurerm_advanced_threat_protection" {
+variable "enable_advanced_threat_protection" {
   type = bool
 
   default = true
